@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Adição de Valor</title>
+</head>
+<body>
+    <h2>Calculadora de Adição de Valor</h2>
+    <form id="calculator">
+        <label for="carPrice">Valor do Carro (R$):</label>
+        <input type="number" id="carPrice" name="carPrice" required><br><br>
+        
+        <label for="downPayment">Valor da Entrada (R$):</label>
+        <input type="number" id="downPayment" name="downPayment" required><br><br>
+
+        <button type="button" onclick="calculate()">Calcular</button>
+    </form>
+    
+    <div id="result" style="display: none;">
+        <h3>Resultado:</h3>
+        <p>Você precisa adicionar <span id="additionalAmount"></span> para que a entrada represente 30% do valor do carro após o aumento.</p>
+    </div>
+
+    <script>
+        function calculate() {
+            var carPrice = parseFloat(document.getElementById('carPrice').value);
+            var downPayment = parseFloat(document.getElementById('downPayment').value);
+            
+            var x = ((0.3 * carPrice) - downPayment).toFixed(2);
+
+            document.getElementById('additionalAmount').innerText = "R$ " + x;
+            document.getElementById('result').style.display = "block";
+        }
+    </script>
+</body>
+</html>
